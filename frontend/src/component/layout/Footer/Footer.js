@@ -1,38 +1,29 @@
 import React from "react";
 import playstore from "../../../images/playstore.png";
 import appstore from "../../../images/Appstore.png";
-
+import "../Footer/Footer.css";
 const Footer = () => {
   return (
-    <footer
-      id="footer"
-      className="flex items-center justify-between mt-10vmax p-2vmax bg-gray-800 text-white"
-    >
-      <div className="leftFooter w-1/3 flex flex-col items-center">
-        <h4 className="font-roboto text-1.2vmax">DOWNLOAD OUR APP</h4>
-        <p className="text-center text-1.2vmax">
-          Download App for Android and IOS mobile phones
-        </p>
-        <img
-          src={playstore}
-          alt="playstore"
-          className="w-10vmax m-1vmax cursor-pointer"
-        />
-        <img
-          src={appstore}
-          alt="Appstore"
-          className="w-10vmax m-1vmax cursor-pointer"
-        />
+    <footer id="footer">
+      <div className="leftFooter">
+        <h4>DOWNLOAD OUR APP</h4>
+        <p>Download App for Android and IOS mobile phone</p>
+        <img src={playstore} alt="playstore" />
+        <img src={appstore} alt="Appstore" />
       </div>
 
-      <div className="midFooter w-1/3 text-center">
-        <h1 className="text-4vmax font-roboto text-red-500">RAP</h1>
-        <h2 className="text-2vmax">TECHNOLOGY PVT LTD</h2>
-        <p className="text-1.2vmax">Copyrights 2024 &copy;</p>
+      <div className="midFooter">
+        <h1>ECOMMERCE.</h1>
+        <p>High Quality is our first priority</p>
+
+        <p>Copyrights 2021 &copy; MeAbhiSingh</p>
       </div>
 
-      <div className="rightFooter w-1/3 flex flex-col items-center">
-        <h4 className="font-roboto text-1.4vmax underline">Follow Us</h4>
+      <div className="rightFooter">
+        <h4>Follow Us</h4>
+        <a href="http://instagram.com/meabhisingh">Instagram</a>
+        <a href="http://youtube.com/6packprogramemr">Youtube</a>
+        <a href="http://instagram.com/meabhisingh">Facebook</a>
       </div>
     </footer>
   );
