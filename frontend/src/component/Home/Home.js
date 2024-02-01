@@ -20,7 +20,7 @@ const Home = () => {
         <p>Welcome to PrintHub</p>
         <h1>YOUR GO TO STATIONARY APP</h1>
         <a href="#container">
-          <button>
+          <button className="text-black">
             Scroll <BsMouse />
           </button>
         </a>
