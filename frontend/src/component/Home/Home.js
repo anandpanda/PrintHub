@@ -2,6 +2,8 @@ import { React, Fragment } from "react";
 import { BsMouse } from "react-icons/bs";
 import "./Home.css";
 import Product from "./Product.js";
+import MetaData from "../layout/MetaData.js";
+import { useDispatch } from "react-redux";
 
 const product = {
   name: "Yellow Tshirt",
@@ -14,8 +16,14 @@ const product = {
   _id: "tshirt1",
 };
 const Home = () => {
+
+  const dispatch = useDispatch();
+
   return (
     <Fragment>
+
+    <MetaData title={"PrintHub"} />
+
       <div className="banner">
         <p>Welcome to PrintHub</p>
         <h1>YOUR GO TO STATIONARY APP</h1>

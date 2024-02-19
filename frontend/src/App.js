@@ -18,6 +18,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<div><h1>Page Not Found!!!!</h1></div>} />
       </Routes>
       <Footer />
     </Router>

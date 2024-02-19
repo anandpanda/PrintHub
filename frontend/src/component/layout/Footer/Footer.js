@@ -21,7 +21,7 @@ const Footer = () => {
 
       <div className="rightFooter w-1/5 flex flex-col items-center">
         <h4 className="font-['roboto'] text-[1.4vmax] underline">Follow Us</h4>
-        <a className="no-underline text-[1.3vmax] font-gill text-white transition-all duration-500 m-[0.5vmax] hover:text-[#eb4034]">some_link</a>
+        <a href="/#" className="no-underline text-[1.3vmax] font-gill text-white transition-all duration-500 m-[0.5vmax] hover:text-[#eb4034]">some_link</a>
       </div>
     </footer>
   );
