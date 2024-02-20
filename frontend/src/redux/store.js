@@ -1,22 +1,30 @@
-// import { createStore, combineReducers, applyMiddleware } from 'redux';
-// import thunk from 'redux-thunk';
-// import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore } from "@reduxjs/toolkit";
+import { createSelector } from "@reduxjs/toolkit";
+import { productReducer } from "./reducers/productReducer.js";
+import { thunk } from "redux-thunk";
 
-// const reducer = combineReducers({
-//     products : productSlice
-// });
-
-// let init = {};
-
-// const middleware = [thunk];
-
-// const store = createStore(reducer, init, composeWithDevTools(applyMiddleware(...middleware)));
-
-import { configureStore } from '@reduxjs/toolkit';
-import productSlice from './slices/productSlice';
-
-export const store = configureStore({
-    reducer : {
-        product : productSlice,
-    },
+const store = configureStore({
+  reducer: {
+    products: productReducer,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
 });
+
+const addProduct = (product) => ({
+  type: "products/addProduct",
+  payload: product,
+});
+const selectProducts = (state) => state.products;
+
+export { store, addProduct, selectProducts };
+
+//-------------------------TRIAL CODE-------------------------
+// import { configureStore } from '@reduxjs/toolkit';
+// import productSlice from './slices/productSlice';
+// import { productReducer } from "./reducers/productReducer";
+
+// export const store = configureStore({
+//     reducer : {
+//         product : productSlice,
+//     },
+// });

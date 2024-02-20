@@ -16,19 +16,17 @@ const product = {
   _id: "tshirt1",
 };
 const Home = () => {
-
   const dispatch = useDispatch();
 
   return (
     <Fragment>
-
-    <MetaData title={"PrintHub"} />
+      <MetaData title={"PrintHub"} />
 
       <div className="banner">
         <p>Welcome to PrintHub</p>
         <h1>YOUR GO TO STATIONARY APP</h1>
         <a href="#container">
-          <button className="text-black">
+          <button>
             Scroll <BsMouse />
           </button>
         </a>
@@ -36,6 +34,14 @@ const Home = () => {
       <h2 className="homeheading">Featured Products</h2>
 
       <div className="container" id="container">
+        <Product product={product} />
+        <Product product={product} />
+        <Product product={product} />
+        <Product product={product} />
+
+        <Product product={product} />
+        <Product product={product} />
+        <Product product={product} />
         <Product product={product} />
       </div>
     </Fragment>
