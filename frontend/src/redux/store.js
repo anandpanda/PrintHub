@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { createSelector } from "@reduxjs/toolkit";
 import { productReducer } from "./reducers/productReducer.js";
 import { thunk } from "redux-thunk";
 
