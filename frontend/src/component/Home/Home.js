@@ -19,6 +19,8 @@ const product = {
 
 const Home = () => {
     const dispatch = useDispatch();
+    const { loading, products, error, productsCount } = useSelector((store) => store.products.products);
+
     useEffect(() => {
         dispatch(fetchProducts());
     }, [dispatch]);
@@ -39,15 +41,12 @@ const Home = () => {
             <h2 className="homeheading">Featured Products</h2>
 
             <div className="container" id="container">
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
+                <div className="row">
+                    {products &&
+                        products.map((product) => {
+                            return <Product key={product._id} product={product} />;
+                        })}
+                </div>
             </div>
         </Fragment>
     );
