@@ -1,0 +1,29 @@
+{
+    "_id": {
+      "$oid": "65d7694939fe4147bc5eb9d7"
+    },
+    "name": "product3",
+    "price": 1300,
+    "description": "this is sample product",
+    "rating": 5,
+    "images": [
+      {
+        "public_id": "sample image",
+        "url": "https://i.ibb.co/DRST11n/1.webp",
+        "_id": {
+          "$oid": "65d7694939fe4147bc5eb9d8"
+        }
+      }
+    ],
+    "category": "Washing Machine",
+    "stock": 1,
+    "numOfReviews": 1,
+    "user": {
+      "$oid": "65d6edbb0f9667c4afc51e92"
+    },
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-02-22T15:33:29.198Z"
+    },
+    "__v": 0
+  }

@@ -2,6 +2,7 @@
     "name": "frontend",
     "version": "0.1.0",
     "private": true,
+    "proxy": "http://localhost:8080",
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
@@ -41,6 +42,5 @@
         "redux-thunk": "^3.1.0",
         "tailwindcss": "^3.4.1",
         "webfontloader": "^1.6.28"
-    },
-    "proxy": "http://192.168.1.145:8080"
+    }
 }

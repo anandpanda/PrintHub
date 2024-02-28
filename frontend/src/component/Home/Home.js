@@ -1,25 +1,16 @@
 import { React, Fragment, useEffect } from "react";
 import { BsMouse } from "react-icons/bs";
 import "./Home.css";
-import Product from "./Product.js";
-import MetaData from "../layout/MetaData.js";
+import Product from "./Product";
+import MetaData from "../layout/MetaData";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts } from "../../redux/slices/productSlice.js";
-
-const product = {
-    name: "Yellow Tshirt",
-    images: [
-        {
-            url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkSc3ZToMF1uZok6IaK1Rw7WoggerqhRtMBw&usqp=CAU",
-        },
-    ],
-    price: "$10",
-    _id: "tshirt1",
-};
+import { fetchProducts } from "../../redux/slices/productSlice";
 
 const Home = () => {
     const dispatch = useDispatch();
-    const { loading, products, error, productsCount } = useSelector((store) => store.products.products);
+    const { loading, products, error, productsCount } = useSelector(
+        (state) => state.product
+    );
 
     useEffect(() => {
         dispatch(fetchProducts());
@@ -41,12 +32,10 @@ const Home = () => {
             <h2 className="homeheading">Featured Products</h2>
 
             <div className="container" id="container">
-                <div className="row">
-                    {products &&
-                        products.map((product) => {
-                            return <Product key={product._id} product={product} />;
-                        })}
-                </div>
+                {products &&
+                    products.map((product) => (
+                        <Product key={product._id} product={product} />
+                    ))}
             </div>
         </Fragment>
     );
