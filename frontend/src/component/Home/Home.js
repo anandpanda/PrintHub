@@ -1,7 +1,7 @@
 import { React, Fragment, useEffect } from "react";
 import { BsMouse } from "react-icons/bs";
 import "./Home.css";
-import Product from "./Product";
+import Product from "./ProductCard.js";
 import MetaData from "../layout/MetaData";
 import Loader from "../layout/Loader/Loader.js";
 import { useSelector, useDispatch } from "react-redux";
