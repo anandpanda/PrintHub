@@ -9,10 +9,14 @@ const initialState = {
 };
 
 //Async thunk to fecth all the products from the backend
-export const fetchProducts = createAsyncThunk("products/fetchAll", async () => {
-  const response = await axios.get("/api/v1/products");
-  return response.data;
-});
+export const fetchProducts = createAsyncThunk(
+  "products/fetchAll",
+  async ({ keyword = "", currentPage = 1, resultPerPage = 10 }) => {
+    let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&limit=${resultPerPage}`;
+    const response = await axios.get(link);
+    return response.data;
+  }
+);
 
 const productSlice = createSlice({
   name: "products",
@@ -32,6 +36,7 @@ const productSlice = createSlice({
         state.loading = false;
         state.products = action.payload.products;
         state.productsCount = action.payload.productsCount;
+        state.resulPerPage = action.payload.resultPerPage;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
