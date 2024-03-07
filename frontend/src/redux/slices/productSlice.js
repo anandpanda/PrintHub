@@ -11,8 +11,24 @@ const initialState = {
 //Async thunk to fecth all the products from the backend
 export const fetchProducts = createAsyncThunk(
   "products/fetchAll",
-  async ({ keyword = "", currentPage = 1, resultPerPage = 10 }) => {
-    let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&limit=${resultPerPage}`;
+  async ({
+    keyword = "",
+    currentPage = 1,
+    resultPerPage = 10,
+    price = [0, 25000],
+    category,
+    rating = 0,
+  } = {}) => {
+    let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&limit=${resultPerPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
+
+    if (rating > 0) {
+      link += `&rating[gte]=${rating}`;
+    }
+
+    if (category) {
+      link += `&category=${category}`;
+    }
+
     const response = await axios.get(link);
     return response.data;
   }
@@ -37,6 +53,7 @@ const productSlice = createSlice({
         state.products = action.payload.products;
         state.productsCount = action.payload.productsCount;
         state.resulPerPage = action.payload.resultPerPage;
+        state.filteredProductsCount = action.payload.filteredProductsCount;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
