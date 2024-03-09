@@ -1,0 +1,17 @@
+{
+    "_id": {
+      "$oid": "65d6ca1cb301facc1ea14bcf"
+    },
+    "name": "Ansh Bansal",
+    "email": "anshofficial4245@gmail.com",
+    "password": "$2a$10$6R2sq6GX.9miVCqGjC7pQuT41vIR6EBx2XyA8f9sN3rlLoW502c/W",
+    "avatar": {
+      "public_id": "this is a sample id",
+      "url": "this is a sample url"
+    },
+    "role": "user",
+    "createdAt": {
+      "$date": "2024-02-22T04:14:20.743Z"
+    },
+    "__v": 0
+  }
