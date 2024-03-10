@@ -6,11 +6,11 @@ import ReactStars from "react-rating-stars-component";
 import { useParams } from "react-router-dom";
 import ReviewCard from "./ReviewCard.js";
 import Loader from "./../layout/Loader/Loader";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 
 //Sliders Testing
 // import AwesomeSlider from 'react-awesome-slider';
-import Carousel from "react-material-ui-carousel";
+// import Carousel from "react-material-ui-carousel";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
