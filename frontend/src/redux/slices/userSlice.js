@@ -2,91 +2,117 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-    user: {},
-    loading: false,
-    isAuthenticated: false,
-    error: null,
+  user: {},
+  loading: false,
+  isAuthenticated: false,
+  error: null,
 };
 
-export const login = createAsyncThunk(
-    "user/login",
-    async (email, password) => {
-        try {
-            const config = {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            };
+//Login Action
+export const login = createAsyncThunk("user/login", async (email, password) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-            const response = await axios.post(
-                "/api/v1/login",
-                {email, password},
-                config
-            );
-            return response.data.user;
-        } catch (error) {
-            return error.response.data.message;
-        }
+    const response = await axios.post(
+      "/api/v1/login",
+      { email, password },
+      config
+    );
+    return response.data.user;
+  } catch (error) {
+    return error.response.data.message;
+  }
 });
 
-export const register = createAsyncThunk(
-    "user/register",
-    async (userData) => {
-        try {
-            const config = {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            };
+//Register Action
+export const register = createAsyncThunk("user/register", async (userData) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
 
-            const response = await axios.post(
-                "/api/v1/register",
-                userData,
-                config
-            );
-            return response.data.user;
-        } catch (error) {
-            return error.response.data.message;
-        }
+    const response = await axios.post("/api/v1/register", userData, config);
+    return response.data.user;
+  } catch (error) {
+    return error.response.data.message;
+  }
+});
+
+//LoadUser Action
+export const loaduser = createAsyncThunk("user/loaduser", async () => {
+  try {
+    const response = await axios.get("/api/v1/me");
+    return response.data.user;
+  } catch (error) {
+    return error.response.data.message;
+  }
 });
 
 const userSlice = createSlice({
-    name: "user",
-    initialState,
-    reducers: {
-        clearErrors: (state) => {
-            state.error = null;
-        },
+  name: "user",
+  initialState,
+  reducers: {
+    clearErrors: (state) => {
+      state.error = null;
     },
-    extraReducers: (builder) => {
-        builder
-        .addCase(login.pending, (state) => {
-            state.loading = true;
-        })
-        .addCase(login.fulfilled, (state, action) => {
-            state.loading = false;
-            state.isAuthenticated = true;
-            state.user = action.payload;
-        })
-        .addCase(login.rejected, (state, action) => {
-            state.loading = false;
-            state.error = action.error.message;
-        })
-        .addCase(register.pending, (state) => {
-            state.loading = true;
-        })
-        .addCase(register.fulfilled, (state, action) => {
-            state.loading = false;
-            state.isAuthenticated = true;
-            state.user = action.payload;
-        })
-        .addCase(register.rejected, (state, action) => {
-            state.loading = false;
-            state.error = action.error.message;
-        });
-    },
-});
+  },
+  extraReducers: (builder) => {
+    builder
 
+      //Login reducers
+      .addCase(login.pending, (state) => {
+        state.loading = true;
+        state.isAuthenticated = false;
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.loading = false;
+        state.isAuthenticated = true;
+        state.user = action.payload;
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+
+      //Register reducers
+      .addCase(register.pending, (state) => {
+        state.loading = true;
+        state.isAuthenticated = false;
+      })
+      .addCase(register.fulfilled, (state, action) => {
+        state.loading = false;
+        state.isAuthenticated = true;
+        state.user = action.payload;
+      })
+      .addCase(register.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+
+      //Load user reducers
+      .addCase(loaduser.pending, (state) => {
+        state.loading = true;
+        state.isAuthenticated = false;
+      })
+      .addCase(loaduser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.isAuthenticated = true;
+        state.user = action.payload;
+      })
+      .addCase(loaduser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+        state.isAuthenticated = false;
+        state.user = null;
+      });
+  },
+});
 
 export const { clearErrors } = userSlice.actions;
 export default userSlice.reducer;
