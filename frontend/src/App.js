@@ -15,7 +15,7 @@ import UserOptions from "./component/layout/Header/UserOptions.js";
 const App = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  
+
   React.useEffect(() => {
     WebFont.load({
       google: {

@@ -8,6 +8,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
+import { logout } from "../../../redux/slices/userSlice";
 
 const UserOptions = ({ user }) => {
   const [open, setOpen] = useState(false);
@@ -40,8 +41,7 @@ const UserOptions = ({ user }) => {
     navigate("/account");
   }
   function logoutUser() {
-    navigate("/login");
-    // dispatch(logout());
+    dispatch(logout());
     alert.success("Logged out successfully");
   }
   return (

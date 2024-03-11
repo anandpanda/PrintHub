@@ -54,6 +54,16 @@ export const loaduser = createAsyncThunk("user/loaduser", async () => {
   }
 });
 
+//Logout Action
+export const logout = createAsyncThunk("user/logout", async () => {
+  try {
+    await axios.get("/api/v1/logout");
+    return { message: "Logout successful" };
+  } catch (error) {
+    return error.response.data.message;
+  }
+});
+
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -110,6 +120,21 @@ const userSlice = createSlice({
         state.error = action.error.message;
         state.isAuthenticated = false;
         state.user = null;
+      })
+
+      //Logout reducers
+      .addCase(logout.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(logout.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = null;
+        state.isAuthenticated = false;
+      })
+      .addCase(logout.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        state.isAuthenticated = true;
       });
   },
 });
