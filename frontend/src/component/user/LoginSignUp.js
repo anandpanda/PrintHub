@@ -8,10 +8,12 @@ import FaceIcon from "@material-ui/icons/Face";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../redux/slices/userSlice";
 import { useAlert } from "react-alert";
+import { useNavigate } from "react-router-dom";
 
-const LoginSignUp = ({ history, location }) => {
+const LoginSignUp = ({ location }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
+  const navigate = useNavigate();
 
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
@@ -69,8 +71,8 @@ const LoginSignUp = ({ history, location }) => {
     }
   };
 
-//   const redirect = location.search ? location.search.split("=")[1] : "/account";
-    //  const redirect = "/";
+  //   const redirect = location.search ? location.search.split("=")[1] : "/account";
+  //  const redirect = "/";
 
   useEffect(() => {
     if (error) {
@@ -79,9 +81,9 @@ const LoginSignUp = ({ history, location }) => {
     }
 
     if (isAuthenticated) {
-      history.push("/");
+      navigate("/");
     }
-  }, [dispatch, error, alert, history, isAuthenticated]);
+  }, [dispatch, error, alert, navigate, isAuthenticated]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {
