@@ -49,10 +49,10 @@ export const loaduser = createAsyncThunk("user/loaduser", async () => {
     try {
         console.log("loaduser tak aa gya");
         const response = await axios.get("/api/v1/me");
-        console.log("nhi hua");
+        console.log(response);
         return response.data.user;
     } catch (error) {
-        return error.response.data.message;
+        throw new Error(error.response.data.message);
     }
 });
 

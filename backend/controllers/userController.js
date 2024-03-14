@@ -141,6 +141,8 @@ exports.resetPassword = async (req, res, next) => {
 };
 
 exports.getUserDetails = async (req, res, next) => {
+    console.log("after token nhi h");
+    console.log(req);
     const user = await User.findById(req.user.id);
     console.log(user, "user");
     res.status(200).json({
