@@ -25,7 +25,7 @@ exports.registerUser = async (req, res, next) => {
             },
         });
 
-      sendToken(user, 201, res);
+        sendToken(user, 201, res);
     } catch (error) {
         next(error);
     }
@@ -35,21 +35,29 @@ exports.loginUser = async (req, res, next) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        return next(new ErrorHandler("Invalid Email or Password", 401));
+        return res.status(400).json({
+            success: false,
+            message: "Please enter email and password",
+        });
     }
 
     const user = await User.findOne({ email }).select("+password");
 
     if (!user) {
-        return next(new ErrorHandler("Invalid Email or Password", 401));
+        return res.status(401).json({
+            success: false,
+            message: "Please enter email and password",
+        });
     }
 
     const isPasswordMatches = user.comparePassword(password);
 
     if (!isPasswordMatches) {
-      return next(new ErrorHandler("Invalid Email or Password", 401));
+        return res.status(401).json({
+            success: false,
+            message: "Please enter email and password",
+        });
     }
-
     sendToken(user, 200, res);
 };
 
