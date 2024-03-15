@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
 import { logout } from "../../../redux/slices/userSlice";
+import Backdrop from "@mui/material/Backdrop";
 
 const UserOptions = ({ user }) => {
   const [open, setOpen] = useState(false);
@@ -46,12 +47,15 @@ const UserOptions = ({ user }) => {
   }
   return (
     <Fragment>
+      <Backdrop open={open} style={{ zIndex: "10" }} />
       <SpeedDial
         ariaLabel="SpeedDial basic example"
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
+        style={{ zIndex: "11" }}
         direction="down"
+        className="speedial"
         icon={
           <img
             className="speedial-icon"
