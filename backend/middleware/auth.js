@@ -7,10 +7,9 @@ exports.isAuthenticatedUser = async (req, res, next) => {
 
     if (!token) {
         console.log("token nhi h");
-        // return res.status(400).send({
-        //     message: "Login first to access this resource",
-        // });
-        res.send(new ErrorHandler("Login first to access this resource", 401));
+        return res.status(401).json({
+            message: "Login first to access this resource",
+        });
     }
 
     const decodedData = jwt.verify(token, process.env.JWT_SECRET);
@@ -23,10 +22,9 @@ exports.authorizeRoles = (...roles) => {
     return (req, res, next) => {
         if (!roles.includes(req.user.role)) {
             return next(
-                new ErrorHandler(
-                    `Role (${req.user.role}) is not allowed to access this resource`,
-                    403
-                )
+                res.status(403).json({
+                    message: `Role (${req.user.role}) is not allowed to access this resource`,
+                })
             );
         }
         next();
