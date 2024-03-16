@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loaduser } from "./redux/slices/userSlice";
 import UserOptions from "./component/layout/Header/UserOptions.js";
 import Profile from "./component/user/Profile.js";
-import WithAuth from "./component/Route/WithAuth.js";
+// import WithAuth from "./component/Route/WithAuth.js";
 const App = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.user);
