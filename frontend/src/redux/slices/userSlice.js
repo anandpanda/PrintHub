@@ -9,24 +9,27 @@ const initialState = {
 };
 
 //Login Action
-export const login = createAsyncThunk("user/login", async (email, password) => {
-  try {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+export const login = createAsyncThunk(
+  "user/login",
+  async ({ loginEmail, loginPassword }) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
 
-    const response = await axios.post(
-      "/api/v1/login",
-      { email, password },
-      config
-    );
-    return response.data.user;
-  } catch (error) {
-    return error.response.data.message;
+      const response = await axios.post(
+        "/api/v1/login",
+        { email: loginEmail, password: loginPassword },
+        config
+      );
+      return response.data.user;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
   }
-});
+);
 
 //Register Action
 export const register = createAsyncThunk("user/register", async (userData) => {
@@ -36,23 +39,19 @@ export const register = createAsyncThunk("user/register", async (userData) => {
         "Content-Type": "multipart/form-data",
       },
     };
-    console.log("Register tak aa gya");
 
     const response = await axios.post("/api/v1/register", userData, config);
-    console.log(response.data);
     return response.data.user;
   } catch (error) {
-    console.log("Still in error");
-    return error.response.data.message;
+    throw new Error(error.response.data.message);
   }
 });
 
 //LoadUser Action
 export const loaduser = createAsyncThunk("user/loaduser", async () => {
   try {
-    console.log("loaduser tak aa gya");
+    // console.log("loaduser tak aa gya");
     const response = await axios.get("/api/v1/me");
-    console.log(response);
     return response.data.user;
   } catch (error) {
     throw new Error(error.response.data.message);
@@ -65,7 +64,7 @@ export const logout = createAsyncThunk("user/logout", async () => {
     await axios.get("/api/v1/logout");
     return { message: "Logout successful" };
   } catch (error) {
-    return error.response.data.message;
+    throw new Error(error.response.data.message);
   }
 });
 
@@ -141,6 +140,8 @@ const userSlice = createSlice({
         state.error = action.payload;
         state.isAuthenticated = true;
       });
+
+    //
   },
 });
 

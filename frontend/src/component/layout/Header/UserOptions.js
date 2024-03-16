@@ -11,6 +11,7 @@ import { useAlert } from "react-alert";
 import { logout } from "../../../redux/slices/userSlice";
 import Backdrop from "@mui/material/Backdrop";
 
+
 const UserOptions = ({ user }) => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();

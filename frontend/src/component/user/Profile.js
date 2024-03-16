@@ -10,10 +10,12 @@ const Profile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!loading && !isAuthenticated) {
+      console.log("user nahi h");
       navigate("/login");
     }
-  }, [navigate, isAuthenticated]);
+  }, [navigate, isAuthenticated, loading]);
+
   return (
     <Fragment>
       {loading ? (
