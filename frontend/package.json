@@ -2,7 +2,7 @@
     "name": "frontend",
     "version": "0.1.0",
     "private": true,
-    "proxy": "http://192.168.130.153:8080",
+    "proxy": "http://localhost:8080/",
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
