@@ -1,21 +1,14 @@
 import React, { Fragment, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData.js";
 import Loader from "../layout/Loader/Loader.js";
 import { Link, useNavigate } from "react-router-dom";
-// import { loaduser } from "../../redux/slices/userSlice.js";
 import "./Profile.css";
 
 const Profile = () => {
-  // const dispatch = useDispatch();
-
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   dispatch(loaduser());
-  // }, [dispatch]);
-  
   useEffect(() => {
     if (!loading && !isAuthenticated) {
       console.log("user nahi h");
