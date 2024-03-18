@@ -12,58 +12,61 @@ import { useDispatch, useSelector } from "react-redux";
 import { loaduser } from "./redux/slices/userSlice";
 import UserOptions from "./component/layout/Header/UserOptions.js";
 import Profile from "./component/user/Profile.js";
-// import WithAuth from "./component/Route/WithAuth.js";
+import UpdateProfile from "./component/user/UpdateProfile.js";
+import UpdatePassword from "./component/user/UpdatePassword.js";
+import ForgotPassword from "./component/user/ForgotPassword.js";
+
+import PrivateRoutes from "./component/Route/PrivateRoutes.js";
 const App = () => {
-  const dispatch = useDispatch();
-  const { isAuthenticated, user } = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+    const { isAuthenticated, user } = useSelector((state) => state.user);
 
-  React.useEffect(() => {
-    WebFont.load({
-      google: {
-        families: ["Roboto", "Droid Sans", "Chilanka"],
-      },
-    });
+    React.useEffect(() => {
+        WebFont.load({
+            google: {
+                families: ["Roboto", "Droid Sans", "Chilanka"],
+            },
+        });
 
-    dispatch(loaduser());
-  }, [dispatch]);
-  return (
-    <Router>
-      <Header />
+        dispatch(loaduser());
+    }, [dispatch]);
+    return (
+        <Router>
+            <Header />
 
-      {isAuthenticated && <UserOptions user={user} />}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginSignUp />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:keyword" element={<Products />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/account" element={<Profile />} />
-        <Route
-          path="*"
-          element={
-            <div>
-              <h1>Page Not Found!!!!</h1>
-            </div>
-          }
-        />
-        {/* <Route
-        //Working but not properly implemented a protected route
-          path="/account"
-          element={
-            <WithAuth
-              isAuthenticated={isAuthenticated}
-              user={user}
-              isAdmin={true}
-            >
-              <Profile />
-            </WithAuth>
-          }
-        /> */}
-      </Routes>
-      <Footer />
-    </Router>
-  );
+            {isAuthenticated && <UserOptions user={user} />}
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<LoginSignUp />} />
+                <Route path="/product/:id" element={<ProductDetails />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/products/:keyword" element={<Products />} />
+                <Route path="/search" element={<Search />} />
+                {/* //Add PrivateRoutes below */}
+                <Route path="/password/forgot" element={<ForgotPassword />} />
+                <Route
+                    element={
+                        <PrivateRoutes
+                            isAdmin={user && user.role === "admin"}
+                        />
+                    }
+                >
+                    <Route path="/account" element={<Profile />} />
+                    <Route path="/me/update" element={<UpdateProfile />} />
+                    <Route path="/password/update" element={<UpdatePassword />} />
+                </Route>
+                <Route
+                    path="*"
+                    element={
+                        <div>
+                            <h1>Page Not Found!!!!</h1>
+                        </div>
+                    }
+                />
+            </Routes>
+            <Footer />
+        </Router>
+    );
 };
 
 export default App;
