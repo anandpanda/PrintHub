@@ -47,8 +47,8 @@ const App = () => {
             </div>
           }
         />
-        //Working but not properly implemented a protected route
         {/* <Route
+        //Working but not properly implemented a protected route
           path="/account"
           element={
             <WithAuth

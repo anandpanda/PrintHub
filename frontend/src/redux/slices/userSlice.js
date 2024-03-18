@@ -49,8 +49,9 @@ export const register = createAsyncThunk("user/register", async (userData) => {
 //LoadUser Action
 export const loaduser = createAsyncThunk("user/loaduser", async () => {
     try {
-        // console.log("loaduser tak aa gya");
+        console.log("loaduser tak aa gya");
         const response = await axios.get("/api/v1/me");
+        console.log("loaduser ho gya");
         return response.data.user;
     } catch (error) {
         throw new Error(error.response.data.message);
