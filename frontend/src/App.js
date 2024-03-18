@@ -12,7 +12,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { loaduser } from "./redux/slices/userSlice";
 import UserOptions from "./component/layout/Header/UserOptions.js";
 import Profile from "./component/user/Profile.js";
-// import WithAuth from "./component/Route/WithAuth.js";
+import UpdateProfile from "./component/user/UpdateProfile.js";
+
+import PrivateRoutes from "./component/Route/PrivateRoutes.js";
 const App = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -38,7 +40,6 @@ const App = () => {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:keyword" element={<Products />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/account" element={<Profile />} />
         <Route
           path="*"
           element={
@@ -47,19 +48,13 @@ const App = () => {
             </div>
           }
         />
-        {/* <Route
-        //Working but not properly implemented a protected route
-          path="/account"
-          element={
-            <WithAuth
-              isAuthenticated={isAuthenticated}
-              user={user}
-              isAdmin={true}
-            >
-              <Profile />
-            </WithAuth>
-          }
-        /> */}
+        {/* //Add PrivateRoutes below */}
+        <Route
+          element={<PrivateRoutes isAdmin={user && user.role === "admin"} />}
+        >
+          <Route path="/account" element={<Profile />} />
+          <Route path="/me/update" element={<UpdateProfile />} />
+        </Route>
       </Routes>
       <Footer />
     </Router>
