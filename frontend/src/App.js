@@ -13,8 +13,10 @@ import { loaduser } from "./redux/slices/userSlice";
 import UserOptions from "./component/layout/Header/UserOptions.js";
 import Profile from "./component/user/Profile.js";
 import UpdateProfile from "./component/user/UpdateProfile.js";
-
 import PrivateRoutes from "./component/Route/PrivateRoutes.js";
+import Dashboard from "./component/admin/Dashboard.js";
+import ProductList from "./component/admin/ProductList.js";
+import NewProduct from "./component/admin/NewProduct.js";
 const App = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -54,6 +56,9 @@ const App = () => {
         >
           <Route path="/account" element={<Profile />} />
           <Route path="/me/update" element={<UpdateProfile />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/products" element={<ProductList />} />
+          <Route path="/admin/product" element={<NewProduct />} />
         </Route>
       </Routes>
       <Footer />

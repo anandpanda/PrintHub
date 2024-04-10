@@ -22,6 +22,14 @@ exports.getAllProducts = async (req, res, next) => {
   });
 };
 
+exports.getAdminProducts = async (req, res, next) => {
+  const products = await Product.find();
+  res.status(200).json({
+    success: true,
+    products,
+  });
+};
+
 exports.getProductDetails = async (req, res, next) => {
   const productId = req.params.id;
   const product = await Product.findById(productId);
