@@ -13,10 +13,10 @@ import { loaduser } from "./redux/slices/userSlice";
 import UserOptions from "./component/layout/Header/UserOptions.js";
 import Profile from "./component/user/Profile.js";
 import UpdateProfile from "./component/user/UpdateProfile.js";
-import UpdatePassword from "./component/user/UpdatePassword.js";
-import ForgotPassword from "./component/user/ForgotPassword.js";
-
 import PrivateRoutes from "./component/Route/PrivateRoutes.js";
+import Dashboard from "./component/admin/Dashboard.js";
+import ProductList from "./component/admin/ProductList.js";
+import NewProduct from "./component/admin/NewProduct.js";
 const App = () => {
     const dispatch = useDispatch();
     const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -34,39 +34,36 @@ const App = () => {
         <Router>
             <Header />
 
-            {isAuthenticated && <UserOptions user={user} />}
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<LoginSignUp />} />
-                <Route path="/product/:id" element={<ProductDetails />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/products/:keyword" element={<Products />} />
-                <Route path="/search" element={<Search />} />
-                {/* //Add PrivateRoutes below */}
-                <Route path="/password/forgot" element={<ForgotPassword />} />
-                <Route
-                    element={
-                        <PrivateRoutes
-                            isAdmin={user && user.role === "admin"}
-                        />
-                    }
-                >
-                    <Route path="/account" element={<Profile />} />
-                    <Route path="/me/update" element={<UpdateProfile />} />
-                    <Route path="/password/update" element={<UpdatePassword />} />
-                </Route>
-                <Route
-                    path="*"
-                    element={
-                        <div>
-                            <h1>Page Not Found!!!!</h1>
-                        </div>
-                    }
-                />
-            </Routes>
-            <Footer />
-        </Router>
-    );
+      {isAuthenticated && <UserOptions user={user} />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginSignUp />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:keyword" element={<Products />} />
+        <Route path="/search" element={<Search />} />
+        <Route
+          path="*"
+          element={
+            <div>
+              <h1>Page Not Found!!!!</h1>
+            </div>
+          }
+        />
+        {/* //Add PrivateRoutes below */}
+        <Route
+          element={<PrivateRoutes isAdmin={user && user.role === "admin"} />}
+        >
+          <Route path="/account" element={<Profile />} />
+          <Route path="/me/update" element={<UpdateProfile />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/products" element={<ProductList />} />
+          <Route path="/admin/product" element={<NewProduct />} />
+        </Route>
+      </Routes>
+      <Footer />
+    </Router>
+  );
 };
 
 export default App;
