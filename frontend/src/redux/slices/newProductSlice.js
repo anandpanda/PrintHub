@@ -18,7 +18,7 @@ export const createProduct = createAsyncThunk(
         },
       };
 
-      const response = await axios.put(
+      const response = await axios.post(
         "/api/v1/admin/product/new",
         productData,
         config
