@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect , useState } from "react";
 import "./ProductDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductDetails } from "../../redux/slices/productDetailsSlice";
@@ -6,6 +6,7 @@ import ReactStars from "react-rating-stars-component";
 import { useParams } from "react-router-dom";
 import ReviewCard from "./ReviewCard.js";
 import Loader from "./../layout/Loader/Loader";
+import { addToCart , removeFromCart } from "../../redux/slices/cartSlice.js";
 // import { useAlert } from "react-alert";
 
 //Sliders Testing
@@ -48,6 +49,24 @@ const ProductDetails = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
+  const [quantity , setQuantity] = useState(1) ;
+
+  const increaseQuantity = () => {
+    if(product.stock <= quantity) return ;
+    const qty = quantity + 1 ;
+    setQuantity(qty);
+  }
+
+  const decreaseQuantity = () => {
+    if (quantity === 1 ) return ;
+    const qty = quantity - 1 ;
+    setQuantity(qty);
+  }
+
+  const addToCartHandler = () => {
+    dispatch(addToCart({id : params._id , quantity : quantity}));
+  }
 
   return (
     <Fragment>
@@ -94,11 +113,11 @@ const ProductDetails = () => {
                 <h1>{`₹${product.price}`}</h1>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
-                    <button>-</button>
-                    <input value="1" type="number" />
-                    <button>+</button>
+                    <button onClick={decreaseQuantity} >-</button>
+                    <input readOnly value="1" type="number" />
+                    <button onClick={increaseQuantity}>+</button>
                   </div>{" "}
-                  <button>Add to Cart</button>
+                  <button onClick={addToCartHandler} >Add to Cart</button>
                 </div>
                 <p>
                   Status:{" "}

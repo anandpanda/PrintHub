@@ -74,6 +74,8 @@ const Products = () => {
     error,
   ]);
 
+  console.log(products);
+
   let count = filteredProductsCount;
 
   return (

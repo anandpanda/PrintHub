@@ -20,7 +20,7 @@ export const fetchProducts = createAsyncThunk(
     rating = 0,
   } = {}) => {
     let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&limit=${resultPerPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
-
+    console.log(link);
     if (rating > 0) {
       link += `&rating[gte]=${rating}`;
     }
@@ -28,8 +28,8 @@ export const fetchProducts = createAsyncThunk(
     if (category) {
       link += `&category=${category}`;
     }
-
     const response = await axios.get(link);
+    console.log(response) ;
     return response.data;
   }
 );
