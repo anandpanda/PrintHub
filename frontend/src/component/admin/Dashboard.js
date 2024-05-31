@@ -11,6 +11,7 @@ import { fetchadminProductDetails } from "../../redux/slices/adminproductDetails
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.product);
+  // console.log(products);
   let outofStock = 0;
   products &&
     products.forEach((item) => {

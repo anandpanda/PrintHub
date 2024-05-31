@@ -15,3 +15,11 @@ const PrivateRoutes = () => {
   return <Outlet />;
 };
 export default PrivateRoutes;
+
+
+
+
+
+
+
+
