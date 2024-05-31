@@ -36,6 +36,7 @@ exports.getAdminProducts = async (req, res, next) => {
 exports.getProductDetails = async (req, res, next) => {
   const productId = req.params.id;
   const product = await Product.findById(productId);
+  console.log(product);
   if (!product) {
     return res.status(404).json({
       success: false,
@@ -73,8 +74,6 @@ exports.deleteProduct = async (req, res, next) => {
     message: "Deleted",
   });
 };
-
-
 exports.updateProduct = async (req, res, next) => {
   try {
     let product = await Product.findById(req.params.id);

@@ -13,7 +13,9 @@ import updateOrderSlice from "./slices/updateOrderSlice.js";
 import deleteOrderSlice from "./slices/deleteOrderSlice.js";
 
 
-//Use these keywords assigned in store to access the state in the component
+//Use these keywords assigned in store to access the state in the componentimport cartReducer from "./slices/cartSlice.js";
+import newOrderReducer from "./slices/orderSlice.js";
+
 export const store = configureStore({
   reducer: {
     product: productReducer,
@@ -28,5 +30,7 @@ export const store = configureStore({
     allOrders: getallOrderSlice,
     updateOrder: updateOrderSlice,
     deleteOrder: deleteOrderSlice,
+    cart : cartReducer,
+    newOrder: newOrderReducer,
   },
 });
