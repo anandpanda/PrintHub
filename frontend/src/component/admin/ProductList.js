@@ -6,7 +6,7 @@ import {
   fetchadminProductDetails,
   clearErrors,
 } from "../../redux/slices/adminproductDetailsSlice";
-import { deleteProduct,reset } from "../../redux/slices/deleteProductSlice.js";
+import { deleteProduct, reset } from "../../redux/slices/deleteProductSlice.js";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
@@ -91,7 +91,7 @@ const ProductList = () => {
             <Link to={`/admin/products/${params.row.id}`}>
               <EditIcon />
             </Link>
-            <Button  onClick={()=> deleteProductHandler(params.row.id)}>
+            <Button onClick={()=> deleteProductHandler(params.row.id)}>
               <DeleteIcon />
             </Button>
           </Fragment>

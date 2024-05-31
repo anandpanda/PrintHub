@@ -51,7 +51,7 @@ const ProductDetails = () => {
   const [quantity , setQuantity] = useState(1) ;
 
   const increaseQuantity = () => {
-    console.log(product.stock , quantity)
+    // console.log(product.stock , quantity)
     if(product.stock <= quantity) return ;
     const qty = quantity + 1 ;
     setQuantity(qty);
@@ -64,7 +64,7 @@ const ProductDetails = () => {
   }
 
   const addToCartHandler = () => {
-    console.log(params._id , quantity);
+    // console.log(params._id , quantity);
     dispatch(addToCart({id : params.id , quantity : quantity}));
   }
 

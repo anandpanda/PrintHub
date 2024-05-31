@@ -12,7 +12,7 @@ const Cart = () => {
 	const navigate = useNavigate();
 
 	const dispatch = useDispatch();
-	console.log("heelo");
+	// console.log("heelo");
 	const cart = useSelector((state) => state.cart.cartItems);
 
 	const increaseQuantity = async (id, quantity) => {

@@ -32,7 +32,7 @@ exports.newOrder = async (req, res, next) => {
 
 exports.getSingleOrder = async (req, res, next) => {
 	try {
-		console.log(req.params.id);
+		// console.log(req.params.id);
 		const order = await Order.findById(req.params.id).populate(
 			"user",
 			"name email"

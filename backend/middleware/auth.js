@@ -5,14 +5,14 @@ exports.isAuthenticatedUser = async (req, res, next) => {
     const { token } = req.cookies;
 
     if (!token) {
-        console.log("token nhi h");
+        // console.log("token nhi h");
         return res.status(401).json({
             message: "Login first to access this resource",
         });
     }
 
     const decodedData = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(decodedData);
+    // console.log(decodedData);
     req.user = await User.findById(decodedData.id);
     next();
 };

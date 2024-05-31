@@ -11,7 +11,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (!loading && !isAuthenticated) {
-      console.log("user nahi h");
+      // console.log("user nahi h");
       navigate("/login");
     }
   }, [navigate, isAuthenticated, loading]);

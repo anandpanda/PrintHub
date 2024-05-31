@@ -32,11 +32,11 @@ exports.registerUser = async (req, res, next) => {
 };
 
 exports.loginUser = async (req, res, next) => {
-  console.log(req);
+  // console.log(req);
   const { email, password } = req.body;
 
   if (!email || !password) {
-    console.log("email or pass nhi h");
+    // console.log("email or pass nhi h");
     return res.status(400).json({
       success: false,
       message: "Please enter email and password",
@@ -47,17 +47,17 @@ exports.loginUser = async (req, res, next) => {
     const user = await User.findOne({ email }).select("+password");
 
     if (!user) {
-      console.log("user nhi mila");
+      // console.log("user nhi mila");
       return res.status(401).json({
         success: false,
         message: "Please enter email and password",
       });
     }
-    console.log("user mil gya");
+    // console.log("user mil gya");
     const isPasswordMatches = await user.comparePassword(password);
 
     if (!isPasswordMatches) {
-      console.log("password nhi match hua");
+      // console.log("password nhi match hua");
       return res.status(401).json({
         success: false,
         message: "Please enter email and password",
@@ -99,7 +99,7 @@ exports.forgotPassword = async (req, res, next) => {
 
   const message = `Your password reset token is as follow : \n\n${resetPasswordUrl}\n\nIf you have not requested this email, then ignore it.`;
 
-  console.log(resetPasswordUrl, message);
+  // console.log(resetPasswordUrl, message);
 
   try {
     await sendEmail({
@@ -150,10 +150,10 @@ exports.resetPassword = async (req, res, next) => {
 };
 
 exports.getUserDetails = async (req, res, next) => {
-  console.log("after token nhi h");
-  console.log(req);
+  // console.log("after token nhi h");
+  // console.log(req);
   const user = await User.findById(req.user.id);
-  console.log(user, "user");
+  // console.log(user, "user");
   res.status(200).json({
     success: true,
     user,
