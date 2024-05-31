@@ -2,11 +2,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-    user: {},
-    loading: false,
-    isAuthenticated: false,
-    error: null,
-    message: null,
+  user: {},
+  loading: false,
+  isAuthenticated: false,
+  error: null,
 };
 
 //Login Action
@@ -50,13 +49,13 @@ export const register = createAsyncThunk("user/register", async (userData) => {
 
 //LoadUser Action
 export const loaduser = createAsyncThunk("user/loaduser", async () => {
-    try {
-        // console.log("loaduser tak aa gya");
-        const response = await axios.get("/api/v1/me");
-        return response.data.user;
-    } catch (error) {
-        throw new Error(error.response.data.message);
-    }
+  try {
+    // console.log("loaduser tak aa gya");
+    const response = await axios.get("/api/v1/me");
+    return response.data.user;
+  } catch (error) {
+    throw new Error(error.response.data.message);
+  }
 });
 
 //Logout Action
@@ -68,29 +67,6 @@ export const logout = createAsyncThunk("user/logout", async () => {
     throw new Error(error.response.data.message);
   }
 });
-
-// Forgot Password Action
-export const forgotPassword = createAsyncThunk(
-    "user/forgotPassword",
-    async (email) => {
-        try {
-            const config = {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            };
-
-            const response = await axios.post(
-                "/api/v1/password/forgot",
-                email,
-                config
-            );
-            return response.data.message;
-        } catch (error) {
-            throw new Error(error.response.data.message);
-        }
-    }
-);
 
 const userSlice = createSlice({
   name: "user",
@@ -150,35 +126,23 @@ const userSlice = createSlice({
         state.user = null;
       })
 
-            //Logout reducers
-            .addCase(logout.pending, (state) => {
-                state.loading = true;
-            })
-            .addCase(logout.fulfilled, (state, action) => {
-                state.loading = false;
-                state.user = null;
-                state.isAuthenticated = false;
-            })
-            .addCase(logout.rejected, (state, action) => {
-                state.loading = false;
-                state.error = action.payload;
-                state.isAuthenticated = true;
-            })
+      //Logout reducers
+      .addCase(logout.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(logout.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = null;
+        state.isAuthenticated = false;
+      })
+      .addCase(logout.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        state.isAuthenticated = true;
+      });
 
-            //Forgot Password reducers
-            .addCase(forgotPassword.pending, (state) => {
-                state.loading = true;
-                state.error = null;
-            })
-            .addCase(forgotPassword.fulfilled, (state, action) => {
-                state.loading = false;
-                state.message = action.payload;
-            })
-            .addCase(forgotPassword.rejected, (state, action) => {
-                state.loading = false;
-                state.error = action.payload;
-            });
-    },
+    //
+  },
 });
 
 export const { clearErrors } = userSlice.actions;

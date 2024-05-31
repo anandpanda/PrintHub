@@ -156,17 +156,6 @@ const NewProduct = () => {
               />
             </div>
 
-            <div>
-              <StorageIcon />
-              <input
-                type="number"
-                placeholder="Stock"
-                required
-                value={stock}
-                onChange={(e) => setStock(e.target.value)}
-              />
-            </div>
-
             <div id="createProductFormFile">
               <input
                 type="file"

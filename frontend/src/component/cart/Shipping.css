@@ -1,25 +1,21 @@
-.updatePasswordContainer {
+.shippingContainer {
     width: 100vw;
-    height: 100vh;
     max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(231, 231, 231);
-    position: fixed;
-    top: 0%;
-    left: 0;
-}
-
-.updatePasswordBox {
+    flex-direction: column;
+  }
+  
+  .shippingBox {
     background-color: white;
     width: 25vw;
-    height: 70vh;
+    height: 90vh;
     box-sizing: border-box;
     overflow: hidden;
-}
-
-.updatePasswordHeading {
+  }
+  
+  .shippingHeading {
     text-align: center;
     color: rgba(0, 0, 0, 0.664);
     font: 400 1.3vmax "Roboto";
@@ -27,26 +23,27 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.205);
     width: 50%;
     margin: auto;
-}
-
-.updatePasswordForm {
+  }
+  
+  .shippingForm {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: auto;
     padding: 2vmax;
     justify-content: space-evenly;
-    height: 70%;
+    height: 80%;
     transition: all 0.5s;
-}
-
-.updatePasswordForm > div {
+  }
+  
+  .shippingForm > div {
     display: flex;
     width: 100%;
     align-items: center;
-}
-
-.updatePasswordForm > div > input {
+  }
+  
+  .shippingForm > div > input,
+  .shippingForm > div > select {
     padding: 1vmax 4vmax;
     padding-right: 1vmax;
     width: 100%;
@@ -55,57 +52,60 @@
     border-radius: 4px;
     font: 300 0.9vmax cursive;
     outline: none;
-}
-
-.updatePasswordForm > div > svg {
+  }
+  
+  .shippingForm > div > svg {
     position: absolute;
     transform: translateX(1vmax);
     font-size: 1.6vmax;
     color: rgba(0, 0, 0, 0.623);
-}
-
-.updatePasswordBtn {
+  }
+  
+  .shippingBtn {
     border: none;
     background-color: tomato;
     color: white;
-    font: 300 0.9vmax "Roboto";
+    font: 300 1vmax "Roboto";
     width: 100%;
-    padding: 0.8vmax;
+    padding: 1vmax;
     cursor: pointer;
     transition: all 0.5s;
-    border-radius: 4px;
     outline: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
-}
-
-.updatePasswordBtn:hover {
+    margin: 2vmax;
+  }
+  
+  .shippingBtn:hover {
     background-color: rgb(179, 66, 46);
-}
-
-@media screen and (max-width: 600px) {
-    .updatePasswordContainer {
-        background-color: white;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .shippingBox {
+      width: 100vw;
+      height: 95vh;
     }
-    .updatePasswordBox {
-        width: 100vw;
-        height: 95vh;
+  
+    .shippingHeading {
+      font: 400 6vw "Roboto";
+      padding: 5vw;
     }
-
-    .updatePasswordForm {
-        padding: 5vmax;
+  
+    .shippingForm {
+      padding: 11vw;
     }
-
-    .updatePasswordForm > div > input {
-        padding: 2.5vmax 5vmax;
-        font: 300 1.7vmax cursive;
+  
+    .shippingForm > div > input,
+    .shippingForm > div > select {
+      padding: 5vw 10vw;
+      font: 300 4vw cursive;
     }
-
-    .updatePasswordForm > div > svg {
-        font-size: 2.8vmax;
+  
+    .shippingForm > div > svg {
+      font-size: 6vw;
+      transform: translateX(3vw);
     }
-
-    .updatePasswordBtn {
-        font: 300 1.9vmax "Roboto";
-        padding: 1.8vmax;
+  
+    .shippingBtn {
+      font: 300 4vw "Roboto";
+      padding: 4vw;
     }
-}
+  }

@@ -14,7 +14,7 @@ export const createProduct = createAsyncThunk(
     try {
       const config = {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",    //"multipart/form-data" //"application/json"
         },
       };
 
@@ -47,7 +47,7 @@ const newproductSlice = createSlice({
       })
       .addCase(createProduct.fulfilled, (state, action) => {
         state.loading = false;
-        state.product = action.payload.product;
+        state.product = action.payload.product || {};
       })
       .addCase(createProduct.rejected, (state, action) => {
         state.loading = false;

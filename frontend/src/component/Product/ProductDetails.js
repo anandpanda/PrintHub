@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect , useState } from "react";
 import "./ProductDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductDetails } from "../../redux/slices/productDetailsSlice";
@@ -6,6 +6,7 @@ import ReactStars from "react-rating-stars-component";
 import { useParams } from "react-router-dom";
 import ReviewCard from "./ReviewCard.js";
 import Loader from "./../layout/Loader/Loader";
+import { addToCart , removeFromCart } from "../../redux/slices/cartSlice.js";
 // import { useAlert } from "react-alert";
 
 //Sliders Testing
@@ -14,8 +15,6 @@ import Loader from "./../layout/Loader/Loader";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-
 
 
 const ProductDetails = () => {
@@ -49,6 +48,26 @@ const ProductDetails = () => {
     slidesToScroll: 1,
   };
 
+  const [quantity , setQuantity] = useState(1) ;
+
+  const increaseQuantity = () => {
+    console.log(product.stock , quantity)
+    if(product.stock <= quantity) return ;
+    const qty = quantity + 1 ;
+    setQuantity(qty);
+  }
+
+  const decreaseQuantity = () => {
+    if (quantity === 1 ) return ;
+    const qty = quantity - 1 ;
+    setQuantity(qty);
+  }
+
+  const addToCartHandler = () => {
+    console.log(params._id , quantity);
+    dispatch(addToCart({id : params.id , quantity : quantity}));
+  }
+
   return (
     <Fragment>
       {loading ? (
@@ -64,7 +83,7 @@ const ProductDetails = () => {
                       className="CarouselImage"
                       key={item.url}
                       src={item.url}
-                      alt={`${i} Slide`}
+                      alt={${i} Slide}
                     />
                   ))}
               </Carousel> */}
@@ -94,11 +113,11 @@ const ProductDetails = () => {
                 <h1>{`₹${product.price}`}</h1>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
-                    <button>-</button>
-                    <input value="1" type="number" />
-                    <button>+</button>
+                    <button onClick={decreaseQuantity} >-</button>
+                    <input readOnly value={quantity} type="number" />
+                    <button onClick={increaseQuantity}>+</button>
                   </div>{" "}
-                  <button>Add to Cart</button>
+                  <button onClick={addToCartHandler} >Add to Cart</button>
                 </div>
                 <p>
                   Status:{" "}
