@@ -5,7 +5,7 @@ import userReducer from "./slices/userSlice";
 import updateProfilereducer from "./slices/updateProfileSlice.js";
 import adminproductDetailsReducer from "./slices/adminproductDetailsSlice.js";
 import newproductSlice from "./slices/newProductSlice.js";
-import cartSlicereducer from "./slices/cartSlice.js";
+import cartReducer from "./slices/cartSlice.js";
 import deleteProductReducer from "./slices/deleteProductSlice.js";
 import updateProductSlice from "./slices/updateProductSlice.js";
 import getallOrderSlice from "./slices/getallOrderSlice.js";
@@ -24,7 +24,6 @@ export const store = configureStore({
     profile: updateProfilereducer,
     adminproductDetails: adminproductDetailsReducer,
     newproduct: newproductSlice,
-    cart : cartSlicereducer,
     deleteproduct: deleteProductReducer,
     updateproduct: updateProductSlice,
     allOrders: getallOrderSlice,

@@ -2,8 +2,6 @@ import React from "react";
 import "./sidebar.css";
 import logo from "../../images/logo.png";
 import { Link } from "react-router-dom";
-import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView";
-import { TreeItem } from "@mui/x-tree-view/TreeItem";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import AddIcon from "@mui/icons-material/Add";
@@ -12,6 +10,9 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import RateReviewIcon from "@mui/icons-material/RateReview";
+import Box from '@mui/material/Box';
+import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
+import { TreeItem } from '@mui/x-tree-view/TreeItem';
 
 const Sidebar = () => {
   return (
@@ -26,20 +27,20 @@ const Sidebar = () => {
         </p>
       </Link>
       <Link>
-        <SimpleTreeView
-          aria-label="file system navigator"
-          sx={{ height: 150, flexGrow: 1, maxWidth: 400, overflowY: "hidden" }}
-        >
-          <TreeItem itemId="1" label="Products">
-            <Link to="/admin/products">
-              <TreeItem itemId="2" label="All" icon={<PostAddIcon />} />
-            </Link>
-
-            <Link to="/admin/product">
-              <TreeItem itemId="3" label="Create" icon={<AddIcon />} />
-            </Link>
-          </TreeItem>
-        </SimpleTreeView>
+        <Box sx={{ minWidth: 250 }}>
+          <SimpleTreeView
+            aria-label="file system navigator"
+          >
+            <TreeItem itemId="1" label="Products">
+              <Link to="/admin/products">
+                <TreeItem itemId="2" label="All" icon={<PostAddIcon />} />
+              </Link>
+              <Link to="/admin/product">
+                <TreeItem itemId="3" label="Create" icon={<AddIcon />} />
+              </Link>
+            </TreeItem>
+          </SimpleTreeView>
+        </Box>
       </Link>
       <Link to="/admin/orders">
         <p>

@@ -25,6 +25,9 @@ import Payment from "./component/cart/Payment.js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./component/cart/OrderSuccess.js";
+import UpdateProduct from './component/admin/UpdateProduct';
+import OrderList from "./component/admin/OrderList.js";
+import ProcessOrder from './component/admin/ProcessOrder';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -60,14 +63,6 @@ const App = () => {
         <Route path="/products/:keyword" element={<Products />} />
         <Route path="/search" element={<Search />} />
         <Route path="/cart" element={<Cart/>}/>
-        <Route
-          path="*"
-          element={
-            <div>
-              <h1>Page Not Found!!!!</h1>
-            </div>
-          }
-        />
         <Route path="/cart" element={<Cart/>}/>
         {/* //Add PrivateRoutes below */}
 
@@ -80,19 +75,33 @@ const App = () => {
           <Route path="/admin/products" element={<ProductList />} />
           <Route path="/admin/product" element={<NewProduct />} />
           <Route path="/shipping" element={<Shipping />} />
+          <Route path="/admin/products/:id" element={<UpdateProduct/>} />
           <Route path="/order/confirm" element={<ConfirmOrder />} />
           <Route path="/success" element={<OrderSuccess />} />
-
+          <Route path="/admin/orders" element={<OrderList />} />
+          <Route path="/admin/order/:id" element={<ProcessOrder />} />
         </Route>
+
+      <Route path="/process/payment" element={
+      stripeApiKey && (
+      <Elements stripe={loadStripe(stripeApiKey)}>
+      <Payment />
+      </Elements>
+        )
+        } />
+
+      <Route
+          path="*"
+          element={
+            <div>
+              <h1>Page Not Found!!!!</h1>
+            </div>
+          }
+        />
       </Routes>
+     
       
-      {stripeApiKey &&
-        (<Elements stripe={loadStripe(stripeApiKey)}>
-            <Routes>
-              <Route path="/process/payment" element={<Payment />} />
-            </Routes>
-        </Elements>
-      )}
+      
 
       <Footer />
     </Router>
