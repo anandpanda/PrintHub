@@ -28,7 +28,7 @@ const Sidebar = () => {
       <Link>
         <SimpleTreeView
           aria-label="file system navigator"
-          sx={{ height: 60, flexGrow: 1, maxWidth: 400, overflowY: "auto" }}
+          sx={{ height: 150, flexGrow: 1, maxWidth: 400, overflowY: "hidden" }}
         >
           <TreeItem itemId="1" label="Products">
             <Link to="/admin/products">

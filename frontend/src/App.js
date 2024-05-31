@@ -17,22 +17,27 @@ import PrivateRoutes from "./component/Route/PrivateRoutes.js";
 import Dashboard from "./component/admin/Dashboard.js";
 import ProductList from "./component/admin/ProductList.js";
 import NewProduct from "./component/admin/NewProduct.js";
+import Cart from "./component/cart/cart.js";
+import UpdateProduct from "./component/admin/UpdateProduct.js";
+import OrderList from "./component/admin/OrderList.js";
+import ProcessOrder from "./component/admin/ProcessOrder.js";
+
 const App = () => {
-    const dispatch = useDispatch();
-    const { isAuthenticated, user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const { isAuthenticated, user } = useSelector((state) => state.user);
 
-    React.useEffect(() => {
-        WebFont.load({
-            google: {
-                families: ["Roboto", "Droid Sans", "Chilanka"],
-            },
-        });
+  React.useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Roboto", "Droid Sans", "Chilanka"],
+      },
+    });
 
-        dispatch(loaduser());
-    }, [dispatch]);
-    return (
-        <Router>
-            <Header />
+    dispatch(loaduser());
+  }, [dispatch]);
+  return (
+    <Router>
+      <Header />
 
       {isAuthenticated && <UserOptions user={user} />}
       <Routes>
@@ -50,15 +55,20 @@ const App = () => {
             </div>
           }
         />
+        <Route path="/cart" element={<Cart/>}/>
         {/* //Add PrivateRoutes below */}
         <Route
-          element={<PrivateRoutes isAdmin={user && user.role === "admin"} />}
+          // element={<PrivateRoutes isAdmin={user && user.role === "admin"} />}
+          element={<PrivateRoutes />}
         >
           <Route path="/account" element={<Profile />} />
           <Route path="/me/update" element={<UpdateProfile />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/products" element={<ProductList />} />
           <Route path="/admin/product" element={<NewProduct />} />
+          <Route path="/admin/products/:id" element={<UpdateProduct />} />
+          <Route path="/admin/orders" element={<OrderList />} />
+          <Route path="/admin/order/:id" element={<ProcessOrder />} />
         </Route>
       </Routes>
       <Footer />
