@@ -5,6 +5,8 @@ import userReducer from "./slices/userSlice";
 import updateProfilereducer from "./slices/updateProfileSlice.js";
 import adminproductDetailsReducer from "./slices/adminproductDetailsSlice.js";
 import newproductSlice from "./slices/newProductSlice.js";
+import adminproductDetailsReducer from "./slices/adminproductDetailsSlice.js";
+import newproductSlice from "./slices/newProductSlice.js";
 import cartReducer from "./slices/cartSlice.js";
 import deleteProductReducer from "./slices/deleteProductSlice.js";
 import updateProductSlice from "./slices/updateProductSlice.js";
@@ -15,6 +17,11 @@ import deleteOrderSlice from "./slices/deleteOrderSlice.js";
 
 //Use these keywords assigned in store to access the state in the componentimport cartReducer from "./slices/cartSlice.js";
 import newOrderReducer from "./slices/orderSlice.js";
+//import myOrdersReducer from "./slices/myOrderSlice.js";
+import orderDetailSlice from "./slices/orderDetailSlice.js";
+import myOrdersSlice from "./slices/myOrdersSlice.js";
+import newReviewSlice from "./slices/newReviewSlice.js";
+import reviewSlice from "./slices/reviewSlice.js";
 
 export const store = configureStore({
   reducer: {
@@ -24,6 +31,8 @@ export const store = configureStore({
     profile: updateProfilereducer,
     adminproductDetails: adminproductDetailsReducer,
     newproduct: newproductSlice,
+    adminproductDetails: adminproductDetailsReducer,
+    newproduct: newproductSlice,
     deleteproduct: deleteProductReducer,
     updateproduct: updateProductSlice,
     allOrders: getallOrderSlice,
@@ -31,5 +40,9 @@ export const store = configureStore({
     deleteOrder: deleteOrderSlice,
     cart : cartReducer,
     newOrder: newOrderReducer,
+    order : orderDetailSlice ,
+    myOrders : myOrdersSlice , 
+    newReview : newReviewSlice , 
+    reviews : reviewSlice ,
   },
 });

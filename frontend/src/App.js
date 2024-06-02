@@ -29,6 +29,13 @@ import UpdateProduct from './component/admin/UpdateProduct';
 import OrderList from "./component/admin/OrderList.js";
 import ProcessOrder from './component/admin/ProcessOrder';
 
+import Dashboard from "./component/admin/Dashboard.js";
+import ProductList from "./component/admin/ProductList.js";
+import NewProduct from "./component/admin/NewProduct.js";
+import Cart from "./component/cart/cart.js";
+import OrderDetails from "./component/orders/orderDetails.js";
+import MyOrders from "./component/orders/myOrders.js";
+
 const App = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.user);

@@ -4,6 +4,7 @@ const ApiFeatures = require("../utils/apiFeatures");
 const cloudinary = require("cloudinary");
 const error = require("../middleware/error");
 
+
 exports.getAllProducts = async (req, res, next) => {
 	const resultPerPage = 8;
 	const productsCount = await Product.countDocuments();
@@ -25,11 +26,11 @@ exports.getAllProducts = async (req, res, next) => {
 };
 
 exports.getAdminProducts = async (req, res, next) => {
-	const products = await Product.find();
-	res.status(200).json({
-		success: true,
-		products,
-	});
+  const products = await Product.find();
+  res.status(200).json({
+    success: true,
+    products,
+  });
 };
 
 exports.getProductDetails = async (req, res, next) => {

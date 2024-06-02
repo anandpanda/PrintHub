@@ -74,7 +74,7 @@ exports.getAllOrders = async (req, res, next) => {
 };
 
 exports.myOrders = async (req, res, next) => {
-	const orders = await Order.find();
+    const orders = await Order.find({ user: req.user._id });
 
 	let totalAmount = 0;
 
