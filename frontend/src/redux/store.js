@@ -28,8 +28,6 @@ export const store = configureStore({
     profile: updateProfilereducer,
     adminproductDetails: adminproductDetailsReducer,
     newproduct: newproductSlice,
-    adminproductDetails: adminproductDetailsReducer,
-    newproduct: newproductSlice,
     deleteproduct: deleteProductReducer,
     updateproduct: updateProductSlice,
     allOrders: getallOrderSlice,

@@ -4,7 +4,6 @@ import "./dashboard.css";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import { Doughnut, Line } from "react-chartjs-2";
-import { Chart, CategoryScale } from "chart.js/auto";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchadminProductDetails } from "../../redux/slices/adminproductDetailsSlice";
 

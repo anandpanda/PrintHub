@@ -10,7 +10,7 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import PublicIcon from "@material-ui/icons/Public";
 import TransferWithinAStationIcon from "@material-ui/icons/TransferWithinAStation";
 import { saveShippingInfo } from "../../redux/slices/cartSlice";
-import { Country, State, City } from "country-state-city";
+import { Country, State } from "country-state-city";
 import { useNavigate } from "react-router-dom";
 import CheckoutSteps from "./CheckoutSteps";
 

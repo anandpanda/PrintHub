@@ -44,7 +44,7 @@ const ProductDetails = () => {
       dispatch(fetchProductDetails(params.id));
       // dispatch new review reset
     }
-  }, [dispatch, params, error , alert,reviewError , success]);
+  }, [dispatch, params, error , alert, reviewError , success]);
 
   // const options = {
   //   edit: false,
