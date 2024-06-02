@@ -16,7 +16,7 @@ import {
 } from "@material-ui/core";
 import  Rating  from "@mui/material/Rating";
 import { newReview } from "../../redux/slices/newReviewSlice.js";
-// import { useAlert } from "react-alert";
+import { useAlert } from "react-alert";
 
 //Sliders Testing
 // import AwesomeSlider from 'react-awesome-slider';
@@ -29,6 +29,7 @@ import "slick-carousel/slick/slick-theme.css";
 const ProductDetails = () => {
   const params = useParams();
   const dispatch = useDispatch();
+  const alert=useAlert();
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
@@ -43,7 +44,7 @@ const ProductDetails = () => {
       dispatch(fetchProductDetails(params.id));
       // dispatch new review reset
     }
-  }, [dispatch, params, error , alert , reviewError , success]);
+  }, [dispatch, params, error , alert,reviewError , success]);
 
   // const options = {
   //   edit: false,
