@@ -6,6 +6,9 @@ import { Typography } from "@mui/material";
 import { Doughnut, Line } from "react-chartjs-2";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchadminProductDetails } from "../../redux/slices/adminproductDetailsSlice";
+import { Chart, CategoryScale, ArcElement, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+
+Chart.register(CategoryScale, ArcElement, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const Dashboard = () => {
   const dispatch = useDispatch();

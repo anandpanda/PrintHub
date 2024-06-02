@@ -71,8 +71,8 @@ const LoginSignUp = () => {
     }
   };
 
-    const redirect = location.search ? location.search.split("=")[1] : "/account";
-  //  const redirect = "/account";
+    // const redirect = location.search ? location.search.split("=")[1] : "/account";
+  const redirect = "/";
 
   useEffect(() => {
     if (error) {
