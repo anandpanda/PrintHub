@@ -43,7 +43,7 @@
   
   .MuiDataGrid-columnHeader {
     background-color: tomato;
-    padding: 1vmax !important;
+    /* padding: 1vmax !important; */
   }
   
   .MuiDataGrid-columnHeader div {

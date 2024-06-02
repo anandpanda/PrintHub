@@ -65,8 +65,8 @@ const ProductDetails = () => {
 
   const options = {
     size: "large",
-    value: product.ratings,
-    readOnly: true,
+    value: product.rating,
+    edit: false,
     precision: 0.5,
   };
 
