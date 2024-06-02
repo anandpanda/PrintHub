@@ -1,0 +1,11 @@
+.speedial {
+  position: fixed;
+  right: 3vmax;
+  top: 3vmax;
+}
+
+.speedial-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+}
