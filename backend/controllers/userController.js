@@ -223,7 +223,7 @@ exports.updateRole = async (req, res, next) => {
     role: req.body.role,
   };
 
-  const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
+  await User.findByIdAndUpdate(req.params.id, newUserData, {
     new: true,
     newValidators: true,
     useFindAndModify: false,
@@ -271,6 +271,9 @@ exports.deleteUser = async (req, res, next) => {
         message: "No user found",
       });
     }
+
+    const imageId = user.avatar.public_id;
+    await cloudinary.v2.uploader.destroy(imageId);
 
     await User.deleteOne({ _id: req.params.id });
 

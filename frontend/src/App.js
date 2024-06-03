@@ -30,6 +30,9 @@ import OrderList from "./component/admin/OrderList.js";
 import ProcessOrder from './component/admin/ProcessOrder';
 import OrderDetails from "./component/orders/orderDetails.js";
 import MyOrders from "./component/orders/myOrders.js";
+import UsersList from "./component/admin/UsersList.js";
+import UpdateUser from './component/admin/UpdateUser';
+import ProductReviews from "./component/admin/ProductReviews.js";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -82,6 +85,9 @@ const App = () => {
           <Route path="/success" element={<OrderSuccess />} />
           <Route path="/admin/orders" element={<OrderList />} />
           <Route path="/admin/order/:id" element={<ProcessOrder />} />
+          <Route path="/admin/users" element={<UsersList />} />
+          <Route path="/admin/user/:id" element={<UpdateUser />} />
+          <Route path="/admin/reviews" element={<ProductReviews />} />
         </Route>
 
       <Route path="/process/payment" element={

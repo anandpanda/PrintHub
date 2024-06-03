@@ -19,6 +19,12 @@ import orderDetailSlice from "./slices/orderDetailSlice.js";
 import myOrdersSlice from "./slices/myOrdersSlice.js";
 import newReviewSlice from "./slices/newReviewSlice.js";
 import reviewSlice from "./slices/reviewSlice.js";
+import getallUsersSlice from "./slices/getallUsersSlice.js";
+import deleteUserSlice from "./slices/deleteUserSlice.js";
+import userDetailsSlice from "./slices/getUserDetailsSlice.js";
+import updateUserSlice from "./slices/updateUserSlice.js";
+import allReviewsSlice from './slices/getallReviewsSlice';
+import deleteReviewSlice from "./slices/deleteReviewSlice.js";
 
 export const store = configureStore({
   reducer: {
@@ -39,5 +45,11 @@ export const store = configureStore({
     myOrders : myOrdersSlice , 
     newReview : newReviewSlice , 
     reviews : reviewSlice ,
+    allUsers : getallUsersSlice,
+    deleteUser : deleteUserSlice,
+    updateUser : updateUserSlice,
+    userDetails : userDetailsSlice, 
+    allReviews : allReviewsSlice,
+    deleteReview : deleteReviewSlice,
   },
 });
