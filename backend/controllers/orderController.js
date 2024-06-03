@@ -114,6 +114,12 @@ exports.updateOrder = async (req, res, next) => {
 		await updateStock(item.product, item.quantity);
 	});
 
+	if (req.body.status === "Shipped") {
+		order.orderItems.forEach(async (o) => {
+		  await updateStock(o.product, o.quantity);
+		});
+	}
+	
 	order.orderStatus = req.body.status;
 
 	if (req.body.status === "Delivered") {

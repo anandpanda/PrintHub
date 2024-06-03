@@ -105,7 +105,7 @@ const NewProduct = () => {
               <SpellcheckIcon />
               <input
                 type="text"
-                placeholder="Name"
+                placeholder="Product Name"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}

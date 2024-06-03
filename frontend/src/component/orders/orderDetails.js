@@ -13,6 +13,7 @@ const OrderDetails = () => {
     const alert = useAlert() ;
     const params = useParams() ;
     const { order, error, loading } = useSelector((state) => state.order);
+    
     useEffect(() => {
         if(error){
             alert.error(error) ;
@@ -22,6 +23,7 @@ const OrderDetails = () => {
                 dispatch(getOrderDetails(params.id)) ;
             }
     } , [dispatch , params , error , alert]) ;
+
     return(
         <Fragment>
         {loading ? (

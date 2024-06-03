@@ -7,12 +7,16 @@ import { Doughnut, Line } from "react-chartjs-2";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchadminProductDetails } from "../../redux/slices/adminproductDetailsSlice";
 import { Chart, CategoryScale, ArcElement, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import { getAllOrders } from "../../redux/slices/orderSlice.js";
+import { getAllUsers } from "../../redux/slices/getallUsersSlice.js";
 
 Chart.register(CategoryScale, ArcElement, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.product);
+  const { orders } = useSelector((state) => state.allOrders);
+  const { users } = useSelector((state) => state.allUsers);
   // console.log(products);
   let outofStock = 0;
   products &&
@@ -24,6 +28,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(fetchadminProductDetails());
+    dispatch(getAllOrders());
+    dispatch(getAllUsers());
   }, [dispatch]);
 
   const lineState = {
@@ -70,11 +76,11 @@ const Dashboard = () => {
             </Link>
             <Link to="/admin/orders">
               <p>Orders</p>
-              <p>4</p>
+              <p>{orders && orders.length}</p>
             </Link>
             <Link to="/admin/users">
               <p>Users</p>
-              <p>2</p>
+              <p>{users && users.length}</p>
             </Link>
           </div>
         </div>

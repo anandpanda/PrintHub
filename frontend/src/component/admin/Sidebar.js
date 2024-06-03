@@ -7,7 +7,7 @@ import AddIcon from "@mui/icons-material/Add";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
-import RateReviewIcon from "@mui/icons-material/RateReview";
+import RateReviewIcon from '@mui/icons-material/RateReview';
 import Box from '@mui/material/Box';
 import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
 import { TreeItem } from '@mui/x-tree-view/TreeItem';
@@ -52,7 +52,7 @@ const Sidebar = () => {
       </Link>
       <Link to="/admin/reviews">
         <p>
-          <RateReviewIcon /> RateReviewIcon
+          <RateReviewIcon /> Reviews
         </p>
       </Link>
     </div>
